@@ -1,4 +1,2 @@
-'use strict';
-
-angular.module('poseidon')
-.constant('firebaseUrl', 'https://ENTER-YOUR-FB-URL.firebaseio.com/');
+angular.module('ptc')
+.constant('firebaseUrl', 'https://ptc.firebaseio.com/');

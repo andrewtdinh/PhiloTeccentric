@@ -1,14 +1,14 @@
-h3 {{name | uppercase}}
-
 .row
   .col-xs-4
-    form(name='userForm', novalidate)
+    form
       .form-group
         label(for='email') Email
-        input.form-control#email(type='email', name='email', ng-model='user.email')
+        input#email.form-control(type='email', name='email', ng-model='user.email')
       .form-group
         label(for='password') Password
-        input.form-control#password(type='password', name='password', ng-model='user.password')
+        input#password.form-control(type='password', name='password', ng-model='user.password')
       .form-group
-        button.btn.btn-default(type='submit', ng-click='submit(user)') Submit
+        button.btn.btn-success(type='submit', ng-click='submit(user)', ng-show='name==="login"') Login
+        //- button.btn.btn-default(type='submit', ng-click='submit(user)', ng-hide='name==="login"') Register
+
   .col-xs-8

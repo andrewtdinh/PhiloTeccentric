@@ -1,23 +1,34 @@
 'use strict';
 
-angular.module('poseidon')
-.controller('UsersCtrl', function($scope, $state, $window, User){
+angular.module('ptc')
+.controller('UsersCtrl', function($scope, $rootScope, $state, User){
+  console.info('$state is:', $state.current.name);
   $scope.name = $state.current.name;
+  User.init();
 
   $scope.submit = function(user){
-    if($scope.name === 'register'){
+    if ($scope.name === 'register') {
       User.register(user)
-      .then(function(){
+      .then(function(data){
+        console.log('Successfully registered user with data: ', data);
         $state.go('login');
       })
-      .catch(function(){
-        $window.swal({title: 'Registration Error', text: 'There was a problem with your registration. Please try again.', type: 'error'});
+      .catch(function(error){
+        alert('An error occurred during registration.  Please check your username and password');
+        console.log('registration error: ' , error);
       });
-    }else{
+    } else {
       User.login(user)
-      .catch(function(){
-        $window.swal({title: 'Login Error', text: 'There was a problem with your login. Please try again.', type: 'error'});
+      .then(function(data){
+        $rootScope.activeUser = data;
+        $state.go('home');
+        console.info('data: ', data);
+      })
+      .catch(function(error){
+        alert('Cannot log you in.  Please recheck your email and password!!');
+        console.log('login error: ', error);
       });
     }
   };
+
 });

@@ -1,14 +1,15 @@
 'use strict';
 
-angular.module('poseidon')
+angular.module('ptc')
 .config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-  .state('home', {url: '/', templateUrl: '/views/general/home.html'})
-  .state('about', {url: '/about', templateUrl: '/views/general/about.html'})
-  .state('faq', {url: '/faq', templateUrl: '/views/general/faq.html'})
+  .state('home', {url: '/', templateUrl: '/views/home/home.html', controller: 'HomeCtrl'})
+  .state('about', {url: '/about', templateUrl: '/views/home/aboutMe.html'})
   .state('contact', {url: '/contact', templateUrl: '/views/general/contact.html'})
-  .state('register', {url: '/register', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
-  .state('login', {url: '/login', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'});
+  .state('login', {url: '/login', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
+  .state('addBlog', {url: '/blogs/add', templateUrl: '/views/blogs/blogs.html', controller: 'BlogsCtrl'})
+  .state('editBlog', {url: '/blogs/edit', templateUrl: '/views/blogs/blogs.html', controller: 'BlogsCtrl'})
+  .state('fullBlog', {url: '/users/{uid}/blogs/{blogKey}/{blogIndex}', templateUrl: '/views/blog/fullBlog.html', controller: 'FullBlogCtrl'});
 });

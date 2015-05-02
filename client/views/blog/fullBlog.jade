@@ -1,0 +1,6 @@
+table.blogList.table.table-striped
+  tbody(ng-repeat='blog in user.blogs')
+    tr.success
+      td.header {{blog.postDate | date:'yyyy-MMM-dd HH:mm.ss'}}:&nbsp;&nbsp;{{blog.title}} &nbsp; (by &nbsp;{{blog.author}})
+    tr.warning
+      td.blurb(ng-click='displayBlog(user, blog)') {{blog.blurb}}
